@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d19">
+  <title>FaraonUCshop — PUBG Mobile UC</title>
+  <style>
+    :root{--bg:#0d0b13;--panel:#171321;--panel2:#211a30;--purple:#9b5cff;--pink:#d35cff;--text:#f7f2ff;--muted:#aaa0b9;--line:#342943}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(ellipse at 80% 0%,#2b1647 0,transparent 36%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+    .wrap{width:min(1100px,92%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid #ffffff12}
+    .brand{font-weight:900;font-size:21px;letter-spacing:.3px}.brand span{color:#bb82ff}.tag{color:var(--muted);font-size:13px}
+    .hero{padding:64px 0 42px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+    .eyebrow{color:#c79aff;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}
+    h1{font-size:clamp(38px,6vw,66px);line-height:1.02;margin:13px 0 16px}.grad{background:linear-gradient(90deg,#fff,#c28aff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);font-size:17px;line-height:1.6;max-width:560px}
+    .hero-card{background:linear-gradient(145deg,#291a40,#171321);border:1px solid #684392;border-radius:24px;padding:28px;box-shadow:0 20px 70px #0007}
+    .coin{width:116px;height:116px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-size:34px;font-weight:900;color:#281638;background:radial-gradient(circle at 35% 30%,#fff5b2,#ffc34d 45%,#b96a20 78%);border:7px solid #ffe09a;box-shadow:0 0 45px #ffbd4c55}
+    .hero-card h3{text-align:center;margin:0 0 8px}.hero-card p{text-align:center;color:var(--muted);margin:0;font-size:14px}
+    section{padding:28px 0 48px}.section-title{font-size:27px;margin:0 0 8px}.sub{color:var(--muted);margin:0 0 22px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .pkg{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:20px;text-align:left;color:var(--text);cursor:pointer;transition:.18s;position:relative}
+    .pkg:hover{transform:translateY(-3px);border-color:#a66aff}.pkg.active{border:2px solid var(--purple);background:linear-gradient(145deg,#281b3c,#171321);padding:19px}
+    .uc{font-size:25px;font-weight:900}.uc small{font-size:13px;color:#d2aaff}.price{font-size:17px;color:#fff;margin-top:9px}.hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .formbox{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px;max-width:650px}
+    label{display:block;font-size:14px;font-weight:700;margin:16px 0 8px}input,select{width:100%;background:#0f0c16;border:1px solid #40334f;border-radius:10px;color:white;padding:14px;font:inherit;outline:none}input:focus,select:focus{border-color:var(--purple)}
+    .btn{width:100%;border:0;border-radius:11px;padding:15px;margin-top:20px;background:linear-gradient(90deg,#8c4ce8,#c05bff);color:white;font-weight:900;font-size:15px;cursor:pointer}.btn:hover{filter:brightness(1.1)}
+    .notice{margin-top:15px;background:#241d30;border:1px solid #4b3a60;color:#c9bdd8;border-radius:12px;padding:13px;font-size:12px;line-height:1.5}
+    #result{display:none;margin-top:16px;padding:15px;border-radius:12px;background:#17271f;border:1px solid #356b4b;color:#c8f5d7;line-height:1.5}
+    footer{border-top:1px solid #ffffff12;padding:25px 0 35px;color:var(--muted);font-size:12px;line-height:1.6}
+    @media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:42px}.hero-card{max-width:420px}.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.pkg{padding:15px}.pkg.active{padding:14px}.uc{font-size:21px}}
+  </style>
+</head>
+<body>
+  <header class="wrap top">
+    <div class="brand">♛ FARAON<span>UC</span>SHOP</div>
+    <div class="tag">UC TOP-UP · DEMO STORE</div>
+  </header>
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">FaraonUCshop</div>
+        <h1>Поповнення <span class="grad">PUBG Mobile UC</span></h1>
+        <p class="lead">Обери пакет UC та введи свій Player ID. Це перша демонстраційна версія магазину — без реальної оплати та автоматичного поповнення.</p>
+      </div>
+      <div class="hero-card">
+        <div class="coin">UC</div>
+        <h3>Твій ігровий баланс</h3>
+        <p>Обирай пакет і перевіряй, як працює оформлення замовлення.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2 class="section-title">Обери пакет UC</h2>
+      <p class="sub">Натисни на пакет, щоб вибрати його.</p>
+      <div class="grid" id="packages">
+        <button class="pkg active" data-uc="60" data-price="0.99"><div class="uc">60 <small>UC</small></div><div class="price">€0.99</div><div class="hint">Стартовий пакет</div></button>
+        <button class="pkg" data-uc="325" data-price="4.99"><div class="uc">325 <small>UC</small></div><div class="price">€4.99</div><div class="hint">Популярний вибір</div></button>
+        <button class="pkg" data-uc="660" data-price="9.99"><div class="uc">660 <small>UC</small></div><div class="price">€9.99</div><div class="hint">Вигідний пакет</div></button>
+        <button class="pkg" data-uc="1800" data-price="24.99"><div class="uc">1800 <small>UC</small></div><div class="price">€24.99</div><div class="hint">Для активних гравців</div></button>
+        <button class="pkg" data-uc="3850" data-price="49.99"><div class="uc">3850 <small>UC</small></div><div class="price">€49.99</div><div class="hint">Великий пакет</div></button>
+        <button class="pkg" data-uc="8100" data-price="99.99"><div class="uc">8100 <small>UC</small></div><div class="price">€99.99</div><div class="hint">Максимальний пакет</div></button>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Дані замовлення</h2>
+      <p class="sub">Для демонстрації достатньо Player ID. Ніколи не вводь пароль від ігрового акаунта.</p>
+      <div class="formbox">
+        <div><strong id="summary">Обрано: 60 UC — €0.99</strong></div>
+        <label for="player">PUBG Mobile Player ID</label>
+        <input id="player" inputmode="numeric" autocomplete="off" placeholder="Введи свій Player ID">
+        <label for="region">Регіон</label>
+        <select id="region"><option>Global</option><option>Europe</option><option>Middle East</option><option>Asia</option><option>North America</option></select>
+        <button class="btn" id="order">Перевірити замовлення</button>
+        <div id="result" role="status"></div>
+        <div class="notice">ДЕМО: ця кнопка лише перевіряє введені дані у браузері. Вона не приймає оплату, не створює реальне замовлення та не додає UC. Не підключай платежі, доки не матимеш законного постачальника та належного оформлення бізнесу.</div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap">© 2026 FaraonUCshop. Демонстраційний незалежний проєкт. Не є офіційним сайтом PUBG MOBILE і не пов'язаний із KRAFTON або Level Infinite. Усі назви належать відповідним власникам.</div></footer>
+  <script>
+    let selected = {uc: "60", price: "0.99"};
+    const cards = document.querySelectorAll(".pkg");
+    const summary = document.getElementById("summary");
+    cards.forEach(card => card.addEventListener("click", () => {
+      cards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      selected = {uc: card.dataset.uc, price: card.dataset.price};
+      summary.textContent = `Обрано: ${selected.uc} UC — €${selected.price}`;
+      document.getElementById("result").style.display = "none";
+    }));
+    document.getElementById("order").addEventListener("click", () => {
+      const id = document.getElementById("player").value.trim();
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      if (!/^[0-9]{5,20}$/.test(id)) {
+        result.style.background = "#302018";
+        result.style.borderColor = "#80512e";
+        result.style.color = "#ffe0c2";
+        result.textContent = "Перевір Player ID: введи від 5 до 20 цифр без пробілів.";
+        return;
+      }
+      result.style.background = "#17271f";
+      result.style.borderColor = "#356b4b";
+      result.style.color = "#c8f5d7";
+      result.textContent = `Демо замовлення сформовано: ${selected.uc} UC, Player ID ${id}, регіон ${document.getElementById("region").value}, сума €${selected.price}. Реальну оплату та поповнення ще не підключено.`;
+    });
+  </script>
+</body>
+</html>
